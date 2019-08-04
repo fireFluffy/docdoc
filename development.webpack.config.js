@@ -21,6 +21,7 @@ const devConfig = {
 
   devServer: {
     clientLogLevel: 'none',
+    inline: true,
     hot: true,
     host: 'localhost',
     port: 3001,

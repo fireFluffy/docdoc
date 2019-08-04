@@ -1,11 +1,15 @@
 // @flow
 import { hot } from 'react-hot-loader/root';
-import React, { PureComponent } from 'react';
+import React from 'react';
 
-class App extends PureComponent<null, null> {
-  render() {
-    return <div>My first page</div>;
-  }
-}
+import Panes from './Panes';
+
+const App = () => (
+  <div className="page">
+    <div className="page__container">
+      <Panes />
+    </div>
+  </div>
+);
 
 export default hot(App);
