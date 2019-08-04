@@ -11,6 +11,8 @@ module.exports = {
     modules: [path.resolve(__dirname), 'node_modules'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
+      '../../theme.config$': path.join(__dirname, 'assets/less', 'theme.config'),
+      'semantic-ui-resources': path.join(__dirname, 'node_modules/semantic-ui-less/themes'),
     },
   },
 

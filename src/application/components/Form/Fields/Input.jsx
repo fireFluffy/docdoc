@@ -26,7 +26,7 @@ const InputWrap = memo(({ field, name, ...props }: InputProps) => (
   <Input {...props} {...field.input} />
 ));
 
-const InputAdapter = ({ name, label, mask, type }: InputFieldProps) => {
+const InputAdapter = ({ name, label, mask, placeholder, type }: InputFieldProps) => {
   const { form } = useContext(TabsContext);
   const field = useField(name, form);
 
@@ -38,9 +38,15 @@ const InputAdapter = ({ name, label, mask, type }: InputFieldProps) => {
         </label>
       )}
       {mask ? (
-        <InputMaskWrap field={field} name={name} mask={mask} type={type} />
+        <InputMaskWrap
+          field={field}
+          name={name}
+          mask={mask}
+          placeholder={placeholder}
+          type={type}
+        />
       ) : (
-        <InputWrap field={field} name={name} type={type} />
+        <InputWrap field={field} name={name} placeholder={placeholder} type={type} />
       )}
     </>
   );
@@ -49,6 +55,7 @@ InputAdapter.defaultProps = {
   name: uuid(),
   label: null,
   mask: null,
+  placeholder: null,
   type: 'text',
   typeField: 'input',
 };

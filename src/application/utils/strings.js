@@ -18,10 +18,12 @@ const Strings = {
     PHONE: {
       NAME: 'phone',
       LABEL: 'Телефон',
+      MASK: 'phone',
     },
     EMAIL: {
       NAME: 'email',
       LABEL: 'Email',
+      PLACEHOLDER: 'example@example.com',
     },
   },
 
@@ -81,16 +83,16 @@ const Strings = {
     },
     DESCRIPTION: {
       NAME: 'description',
-      LABEL: 'Комментарии к заказу...',
+      LABEL: 'Комментарии к заказу',
     },
   },
 
   FORM: {
     SELECT: {
-      DEFAULT: 'Не выбрано',
+      PLACEHOLDER: 'Не выбрано',
     },
     TEXTAREA: {
-      DEFAULT: 'Ваш комментарий здесь...',
+      PLACEHOLDER: 'Ваш комментарий здесь...',
     },
     BUTTONS: {
       NEXT: 'Продолжить',

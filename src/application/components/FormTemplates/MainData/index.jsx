@@ -7,24 +7,25 @@ import InputAdapter from '../../Form/Fields';
 import Strings from '../../../utils/strings';
 
 const { FORM, MAIN_DATA } = Strings;
+const { NAME, SURNAME, PHONE, EMAIL } = MAIN_DATA;
 
 const MainDataForm = () => {
   return (
     <Tab.Pane className="tab__pane">
       <Grid stackable columns={2}>
         <Grid.Column>
-          <InputAdapter label={MAIN_DATA.NAME.LABEL} name={MAIN_DATA.NAME.NAME} />
+          <InputAdapter label={NAME.LABEL} name={NAME.NAME} />
         </Grid.Column>
         <Grid.Column>
-          <InputAdapter label={MAIN_DATA.SURNAME.LABEL} name={MAIN_DATA.SURNAME.NAME} />
+          <InputAdapter label={SURNAME.LABEL} name={SURNAME.NAME} />
         </Grid.Column>
       </Grid>
       <Grid stackable columns={1}>
         <Grid.Column>
-          <InputAdapter label={MAIN_DATA.PHONE.LABEL} name={MAIN_DATA.PHONE.NAME} mask="phone" />
+          <InputAdapter label={PHONE.LABEL} name={PHONE.NAME} mask={PHONE.MASK} />
         </Grid.Column>
         <Grid.Column>
-          <InputAdapter label={MAIN_DATA.EMAIL.LABEL} name={MAIN_DATA.EMAIL.NAME} />
+          <InputAdapter label={EMAIL.LABEL} name={EMAIL.NAME} placeholder={EMAIL.PLACEHOLDER} />
         </Grid.Column>
         <Grid.Column>
           <Button primary>{FORM.BUTTONS.NEXT}</Button>

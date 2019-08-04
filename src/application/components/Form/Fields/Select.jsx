@@ -8,9 +8,9 @@ import _ from 'lodash';
 import TabsContext from '../../../context';
 import Strings from '../../../utils/strings';
 
-const { FORM } = Strings;
+const { PLACEHOLDER } = Strings.FORM.SELECT;
 
-const SelectAdapter = ({ label, name, options, search }) => {
+const SelectAdapter = ({ label, name, options, placeholder, search }) => {
   const { form } = useContext(TabsContext);
   const { input } = useField(name, form);
   const onChange = (e, { value }) => input.onChange(value);
@@ -20,7 +20,7 @@ const SelectAdapter = ({ label, name, options, search }) => {
       {_.isString(label) && <label htmlFor={name}>{label}</label>}
       <Dropdown
         fluid
-        placeholder={FORM.SELECT.DEFAULT}
+        placeholder={placeholder}
         search
         selection
         name={name}
@@ -37,6 +37,7 @@ SelectAdapter.defaultProps = {
   label: null,
   options: [],
   search: true,
+  placeholder: PLACEHOLDER,
   typeField: 'select',
 };
 
