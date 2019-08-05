@@ -10,15 +10,19 @@ const Strings = {
     NAME: {
       NAME: 'name',
       LABEL: 'Имя',
+      PLACEHOLDER: 'Укажите имя',
     },
     SURNAME: {
       NAME: 'surname',
       LABEL: 'Фамилия',
+      PLACEHOLDER: 'Укажите фамилию',
     },
     PHONE: {
       NAME: 'phone',
       LABEL: 'Телефон',
       MASK: 'phone',
+      PLACEHOLDER: '123 456 - 78 - 90',
+      PREFIX: '+7',
     },
     EMAIL: {
       NAME: 'email',

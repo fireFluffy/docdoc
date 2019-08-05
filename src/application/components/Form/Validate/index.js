@@ -1,8 +1,6 @@
 // @flow
-import _ from 'lodash';
+import validateAdapter from './ValidateAdapter';
+import fieldClass from './FieldClass ';
 
-const required = value => null;
-
-const validate = {};
-
-export default validate;
+export default validateAdapter;
+export { fieldClass };

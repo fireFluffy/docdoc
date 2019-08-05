@@ -1,7 +1,7 @@
 import React from 'react';
 
-import MainDataForm from '../components/FormTemplates/MainData';
-import AddressForm from '../components/FormTemplates/Address';
+import MainDataForm from '../containers/MainData';
+import AddressForm from '../containers/Address';
 import Strings from './strings';
 
 const RenderMainData = () => <MainDataForm />;

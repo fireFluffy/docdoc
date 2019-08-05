@@ -1,25 +1,28 @@
 // @flow
 import React, { memo, useContext } from 'react';
 import { useField } from 'react-final-form-hooks';
-import TextareaAutosize from 'react-textarea-autosize';
+import TextArea from 'react-textarea-autosize';
 import uuid from 'uuid4';
 import _ from 'lodash';
 
-import TabsContext from '../../../context';
+import FormContext, { FieldContext } from '../Context';
 import Strings from '../../../utils/strings';
 import type { TextAreaFieldProps } from '../../../Types';
 
 const { PLACEHOLDER } = Strings.FORM.TEXTAREA;
 
-const TextAreaAdapter = ({ name, label, placeholder }: TextAreaFieldProps) => {
-  const { form } = useContext(TabsContext);
-  const { input } = useField(name, form);
+const TextAreaAdapter = ({ name, label, placeholder, typeField }: TextAreaFieldProps) => {
+  const { form } = useContext(FormContext);
+  const field = useField(name, form);
+  const context = { field, name, label, typeField };
 
   return (
-    <div className="ui form">
-      {_.isString(label) && <label htmlFor={name}>{label}</label>}
-      <TextareaAutosize maxRows={8} name={name} placeholder={placeholder} {...input} />
-    </div>
+    <FieldContext.Provider value={context}>
+      <div className="ui form">
+        {_.isString(label) && <label htmlFor={name}>{label}</label>}
+        <TextArea maxRows={8} name={name} placeholder={placeholder} {...field.input} />
+      </div>
+    </FieldContext.Provider>
   );
 };
 

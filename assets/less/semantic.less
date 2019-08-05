@@ -9,6 +9,10 @@
   width: 100%;
 }
 
+.select-size {
+  font-size: 1.14285714em !important;
+}
+
 textarea {
   min-height: 100px;
   resize: vertical;
@@ -22,4 +26,35 @@ label {
 
 input ~ label {
   font-weight: 400;
+}
+
+// Form
+.ui.success label {
+  color: #308330;
+}
+.ui.success input {
+  background: #f4faf4 none repeat scroll 0 0;
+  border-color: #a3c293;
+  border-radius: 0.285714rem;
+  box-shadow: none;
+  color: #308330;
+}
+/* Success Placeholder */
+.ui.success ::-webkit-input-placeholder {
+  color: #5e9e5e;
+}
+.ui.success ::-ms-input-placeholder {
+  color: #5e9e5e;
+}
+.ui.success ::-moz-placeholder {
+  color: #5e9e5e;
+}
+.ui.success :focus::-webkit-input-placeholder {
+  color: #558e55;
+}
+.ui.success :focus::-ms-input-placeholder {
+  color: #558e55;
+}
+.ui.success :focus::-moz-placeholder {
+  color: #558e55;
 }
