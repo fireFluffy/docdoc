@@ -34,7 +34,7 @@ const RenderForm = ({ height }: string | number) => (
             <InputAdapter name={ADDRESS.CITY.NAME} label={ADDRESS.CITY.LABEL} />
           </Grid.Column>
           <Grid.Column>
-            <InputAdapter name={ADDRESS.ZIP.NAME} label={ADDRESS.ZIP.LABEL} />
+            <InputAdapter name={ADDRESS.ZIP.NAME} label={ADDRESS.ZIP.LABEL} equal={6} max={6} />
           </Grid.Column>
         </Grid>
         <Grid stackable columns={1}>
@@ -56,7 +56,9 @@ const RenderForm = ({ height }: string | number) => (
         <TextAreaAdapter name={ADDRESS.DESCRIPTION.NAME} label={ADDRESS.DESCRIPTION.LABEL} />
       </Grid.Column>
       <Grid.Column>
-        <Button primary>{FORM.BUTTONS.SUBMIT}</Button>
+        <Button primary type="submit">
+          {FORM.BUTTONS.SUBMIT}
+        </Button>
       </Grid.Column>
     </Grid>
   </>

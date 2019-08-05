@@ -14,16 +14,19 @@ const { LABEL } = ADDRESS.DELIVERY;
 const initialValues = {
   delivery: 'Доставка',
 };
-const onSubmit = _.constant();
+const onSubmit = values => {
+  console.log(values);
+  return null;
+};
 
 const getHeight = value => (value === LABEL[1] ? 0 : 'auto');
 
 const AddressForm = () => {
-  const { form, handleSubmit, values } = useForm({
+  const { form, handleSubmit, submitFailed, values } = useForm({
     initialValues,
     onSubmit,
   });
-  const context = { form, values };
+  const context = { form, submitFailed, values };
   const {
     input: { value },
   } = useField(ADDRESS.DELIVERY.NAME, form);

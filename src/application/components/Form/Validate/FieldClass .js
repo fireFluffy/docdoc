@@ -1,10 +1,10 @@
 // @flow
 
-const fieldClass = meta => {
+const fieldClass = (meta, submitFailed) => {
   const valid = meta?.valid;
   const modified = meta?.modified;
 
-  if (!valid && modified) {
+  if (!valid && (modified || submitFailed)) {
     return 'error';
   }
 

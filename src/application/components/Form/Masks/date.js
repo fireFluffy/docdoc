@@ -10,4 +10,9 @@ const dateMask = {
   mask: '19/39/5999',
   permanents: [2, 5],
 };
+
+const dateValidateMask = /^\d{2}\/\d{2}\/\d{4}$/i;
+
 export default dateMask;
+
+export { dateValidateMask };

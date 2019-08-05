@@ -2,18 +2,23 @@
 import _ from 'lodash';
 import validateObj from './ValidTypes';
 
+const defaultValidators = {
+  validMask: true,
+  validEmail: true,
+};
+
 const notFalse = value => value !== false;
 
-const validateAdapter = (label, validators) => value => {
-  const obj = _.pickBy(validators, notFalse);
+const validateAdapter = (label, validators, options) => value => {
+  const obj = _.assign(_.pickBy(validators, notFalse), defaultValidators);
   const errors = {};
 
   _.forOwn(obj, (val, key) => {
     if (_.has(validateObj, key)) {
-      const result = validateObj[key].call(value);
+      const result = validateObj[key].call(value, options);
 
       if (!result) {
-        errors[key] = validateObj[key].message(label);
+        errors[key] = validateObj[key].message(label, options);
       }
     }
   });

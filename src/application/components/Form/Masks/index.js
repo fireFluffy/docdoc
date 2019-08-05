@@ -1,6 +1,7 @@
 // @flow
-import phoneMask from './phone';
-import dateMask from './date';
+import phoneMask, { phoneValidateMask } from './phone';
+import emailValidateMask from './email';
+import dateMask, { dateValidateMask } from './date';
 
 const getMask = mask => {
   switch (mask) {
@@ -12,4 +13,11 @@ const getMask = mask => {
   }
 };
 
+const objValidateMask = {
+  phone: phoneValidateMask,
+  email: emailValidateMask,
+  dateDelivery: dateValidateMask,
+};
+
 export default getMask;
+export { objValidateMask };

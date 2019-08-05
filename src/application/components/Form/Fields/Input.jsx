@@ -19,20 +19,43 @@ const InputMaskWrap = memo(({ className, field, mask, name, prefix, ...props }: 
   useEffect(() => changeStateMask(strMask), [strMask]);
 
   return (
-    <InputMask {...props} onChange={field.input.onChange} {...stateMask}>
-      {inputProps => <Input className={className} {...inputProps} label={prefix} />}
+    <InputMask
+      {...props}
+      {...stateMask}
+      alwaysShowMask
+      defaultValue={field.input.value}
+      onChange={field.input.onChange}
+      onFocus={field.input.onFocus}
+      onBlur={field.input.onBlur}>
+      {inputProps => <Input {...inputProps} className={className} label={prefix} />}
     </InputMask>
   );
 });
 
-const InputWrap = memo(({ className, field, name, prefix, ...props }: InputProps) => (
-  <Input className={className} {...props} {...field.input} label={prefix} />
-));
+const InputWrap = memo(({ className, field, max, name, prefix, ...props }: InputProps) => {
+  const interceptChange = (e, data) => {
+    if (!(max < data.value.length)) {
+      field.input.onChange(e, data);
+    }
+  };
+
+  return (
+    <Input
+      {...props}
+      {...field.input}
+      className={className}
+      label={prefix}
+      onChange={interceptChange}
+    />
+  );
+});
 
 const InputAdapter = ({
-  name,
+  equal,
   label,
   mask,
+  max,
+  name,
   placeholder,
   prefix,
   required,
@@ -40,12 +63,13 @@ const InputAdapter = ({
   type,
   typeField,
 }: InputFieldProps) => {
-  const { form } = useContext(FormContext);
-  const validators = { required };
-  const validateMethod = validateAdapter(label, validators);
+  const { form, submitFailed } = useContext(FormContext);
+  const validators = { equal, required };
+  const optionsValidator = { equal, mask, name };
+  const validateMethod = validateAdapter(label, validators, optionsValidator);
   const field = useField(name, form, validateMethod);
   const context = { field, name, label, typeField };
-  const className = useMemo(() => fieldClass(field.meta), [field.meta]);
+  const className = useMemo(() => fieldClass(field.meta, submitFailed), [field.meta, submitFailed]);
 
   return (
     <FieldContext.Provider value={context}>
@@ -68,6 +92,7 @@ const InputAdapter = ({
           className={className}
           field={field}
           name={name}
+          max={max}
           placeholder={placeholder}
           prefix={prefix}
           size={size}
@@ -79,9 +104,11 @@ const InputAdapter = ({
   );
 };
 InputAdapter.defaultProps = {
-  name: uuid(),
+  equal: false,
   label: null,
   mask: null,
+  max: 255,
+  name: uuid(),
   placeholder: null,
   prefix: null,
   required: false,

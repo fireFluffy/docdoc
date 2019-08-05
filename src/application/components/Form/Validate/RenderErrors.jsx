@@ -2,16 +2,19 @@ import React, { memo, useContext } from 'react';
 import { Label, List } from 'semantic-ui-react';
 import _ from 'lodash';
 
-import { FieldContext } from '../Context';
+import formContext, { FieldContext } from '../Context';
 
 const RenderErrors = () => {
-  const { field } = useContext(FieldContext);
+  const { submitFailed } = useContext(formContext);
+  const {
+    field: { meta },
+  } = useContext(FieldContext);
 
-  if (!field?.meta?.error || !field.meta.dirty) {
+  if (meta?.valid || meta?.active || (!meta?.modified && !submitFailed)) {
     return null;
   }
 
-  const { error } = field.meta;
+  const { error } = meta;
 
   return (
     <div className="validate">

@@ -31,6 +31,7 @@ const RenderForm = () => (
           name={PHONE.NAME}
           placeholder={PHONE.PLACEHOLDER}
           prefix={PHONE.PREFIX}
+          required
         />
       </Grid.Column>
       <Grid.Column>
@@ -42,7 +43,9 @@ const RenderForm = () => (
         />
       </Grid.Column>
       <Grid.Column>
-        <Button primary>{FORM.BUTTONS.NEXT}</Button>
+        <Button type="submit" primary>
+          {FORM.BUTTONS.NEXT}
+        </Button>
       </Grid.Column>
     </Grid>
   </>

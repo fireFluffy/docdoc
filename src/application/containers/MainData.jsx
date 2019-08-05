@@ -8,15 +8,18 @@ import RenderForm from '../components/MainData/RenderForm';
 import TabsContext from '../context';
 import FormContext from '../components/Form/Context';
 
-const onSubmit = _.constant();
+const onSubmit = values => {
+  console.log(values);
+  return null;
+};
 
 const MainDataForm = () => {
   const { formState, updateFormState, updateIsValid } = useContext(TabsContext);
-  const { form, handleSubmit, values, valid } = useForm({
+  const { form, handleSubmit, submitFailed, values, valid } = useForm({
     initialValues: formState,
     onSubmit,
   });
-  const context = { form, values };
+  const context = { form, submitFailed, values };
 
   useEffect(() => {
     updateIsValid(valid);

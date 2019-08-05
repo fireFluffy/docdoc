@@ -104,7 +104,10 @@ const Strings = {
     },
 
     VALIDATION: {
-      REQUIRED: field => `Поле ${field} является обязательным для заполнения`,
+      EQUAL: (label, { equal }) => `Поле "${label} должно содержать символов - ${equal}"`,
+      REQUIRED: label => `Поле "${label}" является обязательным для заполнения`,
+      VALID_MASK: label => `Некорректно заполнено поле "${label}"`,
+      VALID_EMAIL: () => `E-mail адрес указан неверно`,
     },
   },
 };
