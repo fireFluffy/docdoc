@@ -1,5 +1,6 @@
 // @flow
-import React, { memo, useLayoutEffect, useMemo, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
+import { Form } from 'react-final-form';
 import { useField, useForm } from 'react-final-form-hooks';
 import { Tab } from 'semantic-ui-react';
 import _ from 'lodash';
@@ -19,39 +20,43 @@ const onSubmit = values => {
   return null;
 };
 
-const getHeight = value => (value === LABEL[1] ? 0 : 'auto');
+// const getHeight = value => {
+//   const isEqualRadio = value === LABEL[1];
+//   return {
+//     newHeight: isEqualRadio ? 0 : 'auto',
+//     required: !isEqualRadio,
+//   };
+// };
 
 const AddressForm = () => {
-  const { form, handleSubmit, submitFailed, values } = useForm({
-    initialValues,
-    onSubmit,
-  });
-  const context = { form, submitFailed, values };
-  const {
-    input: { value },
-  } = useField(ADDRESS.DELIVERY.NAME, form);
-  const newHeight = useMemo(() => getHeight(value), [value]);
-  const [height, changeHeight] = useState(null);
+  // const { form, handleSubmit, submitFailed, values } = useForm({
+  //   initialValues,
+  //   onSubmit,
+  // });
+  // const {
+  //   input: { value },
+  // } = useField(ADDRESS.DELIVERY.NAME, form);
+  // const { newHeight, required } = useMemo(() => getHeight(value), []);
+  // const [height, changeHeight] = useState(null);
 
-  useLayoutEffect(() => {
-    if (!_.isEmpty(value)) {
-      changeHeight(newHeight);
-    }
-  }, [newHeight, value]);
+  // useEffect(() => {
+  //   if (!_.isEmpty(value)) {
+  //     changeHeight(newHeight);
+  //   }
+  // }, [newHeight]);
 
-  if (_.isNil(height)) {
-    return null;
-  }
+  // if (_.isNil(height)) {
+  //   return null;
+  // }
 
   return (
-    <FormContext.Provider value={context}>
-      <Tab.Pane className="tab__pane">
-        <form onSubmit={handleSubmit}>
-          <RenderForm height={height} />
-          <pre>{JSON.stringify(values, 0, 2)}</pre>
-        </form>
-      </Tab.Pane>
-    </FormContext.Provider>
+    <Tab.Pane className="tab__pane">
+      <Form initialValues={initialValues} onSubmit={onSubmit} component={RenderForm} />
+      {/* <form onSubmit={handleSubmit}>
+        <RenderForm height={height} required={required} />
+        <pre>{JSON.stringify(values, 0, 2)}</pre>
+      </form> */}
+    </Tab.Pane>
   );
 };
 

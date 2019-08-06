@@ -1,6 +1,7 @@
 // @flow
 import React, { memo, useMemo, useContext, useEffect, useState } from 'react';
 import { useField } from 'react-final-form-hooks';
+import { Field } from 'react-final-form';
 import { Input } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 import uuid from 'uuid4';
@@ -65,7 +66,7 @@ const InputAdapter = ({
 }: InputFieldProps) => {
   const { form, submitFailed } = useContext(FormContext);
   const validators = { equal, required };
-  const optionsValidator = { equal, mask, name };
+  const optionsValidator = { equal, mask, name, required };
   const validateMethod = validateAdapter(label, validators, optionsValidator);
   const field = useField(name, form, validateMethod);
   const context = { field, name, label, typeField };
@@ -77,27 +78,29 @@ const InputAdapter = ({
         {label}
       </Label>
       {mask ? (
-        <InputMaskWrap
-          className={className}
-          field={field}
-          name={name}
-          mask={mask}
-          placeholder={placeholder}
-          prefix={prefix}
-          size={size}
-          type={type}
-        />
+        // <InputMaskWrap
+        //   className={className}
+        //   field={field}
+        //   name={name}
+        //   mask={mask}
+        //   placeholder={placeholder}
+        //   prefix={prefix}
+        //   size={size}
+        //   type={type}
+        // />
+        <Field component={InputMaskWrap} name={name} />
       ) : (
-        <InputWrap
-          className={className}
-          field={field}
-          name={name}
-          max={max}
-          placeholder={placeholder}
-          prefix={prefix}
-          size={size}
-          type={type}
-        />
+        // <InputWrap
+        //   className={className}
+        //   field={field}
+        //   name={name}
+        //   max={max}
+        //   placeholder={placeholder}
+        //   prefix={prefix}
+        //   size={size}
+        //   type={type}
+        // />
+        <Field component={InputWrap} name={name} />
       )}
       <RenderErrors />
     </FieldContext.Provider>

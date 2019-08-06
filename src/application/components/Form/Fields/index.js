@@ -1,8 +1,17 @@
-import InputAdapter, { Input, InputMask } from './Input';
-import CheckboxAdapter from './Checkbox';
-import SelectAdapter from './Select';
-import TextAreaAdapter from './TextArea';
+import DefaultInput, { InputAdapter } from './Input';
+import DefaultSelect, { SelectAdapter } from './Select';
+import DefaultCheckbox, { CheckboxAdapter } from './Checkbox';
+import DefaultTextArea, { TextAreaAdapter } from './TextArea';
 import Label from './Label';
 
-export default InputAdapter;
-export { CheckboxAdapter, Input, InputMask, SelectAdapter, TextAreaAdapter, Label };
+export {
+  DefaultInput,
+  InputAdapter,
+  DefaultSelect,
+  SelectAdapter,
+  DefaultCheckbox,
+  CheckboxAdapter,
+  DefaultTextArea,
+  TextAreaAdapter,
+  Label,
+};
