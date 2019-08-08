@@ -9,21 +9,21 @@ const defaultValidators = {
 
 const notFalse = value => value !== false;
 
-const validateAdapter = (label, validators, options) => value => {
-  const obj = _.assign(_.pickBy(validators, notFalse), defaultValidators);
+function validateAdapter(value) {
+  const obj = _.assign(_.pickBy(this.validators, notFalse), defaultValidators);
   const errors = {};
 
   _.forOwn(obj, (val, key) => {
     if (_.has(validateObj, key)) {
-      const result = validateObj[key].call(value, options);
+      const result = validateObj[key].call(value, this.options);
 
       if (!result) {
-        errors[key] = validateObj[key].message(label, options);
+        errors[key] = validateObj[key].message(this.label, this.options);
       }
     }
   });
 
   return _.keys(errors).length ? errors : null;
-};
+}
 
 export default validateAdapter;

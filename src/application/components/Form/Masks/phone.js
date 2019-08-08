@@ -9,7 +9,7 @@ const phoneMask = {
     maskChar: 'x',
     permanents: [7, 10],
   },
-  phoneValidateMask: /^\d{3}\s\d{3}-\d{2}-\d{2}$/i,
+  validateMask: /^\d{3}\s\d{3}-\d{2}-\d{2}$/i,
   replace: /[^0-9]/g,
 };
 

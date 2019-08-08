@@ -16,7 +16,7 @@ const MainDataForm = () => {
 
   return (
     <Tab.Pane className="tab__pane">
-      <Form initialValues={formState} onSubmit={onSubmit} component={RenderForm} />
+      <Form component={RenderForm} initialValues={formState} onSubmit={onSubmit} validateOnBlur />
     </Tab.Pane>
   );
 };

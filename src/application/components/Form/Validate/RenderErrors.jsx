@@ -6,9 +6,7 @@ import formContext, { FieldContext } from '../Context';
 
 const RenderErrors = () => {
   const { submitFailed } = useContext(formContext);
-  const {
-    field: { meta },
-  } = useContext(FieldContext);
+  const { meta } = useContext(FieldContext);
 
   if (meta?.valid || meta?.active || (!meta?.modified && !submitFailed)) {
     return null;

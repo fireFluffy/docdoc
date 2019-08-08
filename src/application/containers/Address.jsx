@@ -51,7 +51,12 @@ const AddressForm = () => {
 
   return (
     <Tab.Pane className="tab__pane">
-      <Form initialValues={initialValues} onSubmit={onSubmit} component={RenderForm} />
+      <Form
+        component={RenderForm}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validateOnBlur
+      />
       {/* <form onSubmit={handleSubmit}>
         <RenderForm height={height} required={required} />
         <pre>{JSON.stringify(values, 0, 2)}</pre>

@@ -73,7 +73,7 @@ const RenderForm = ({ form, handleSubmit, submitFailed, valid, values }) => {
               <InputAdapter
                 name={ADDRESS.DATE_DELIVERY.NAME}
                 label={ADDRESS.DATE_DELIVERY.LABEL}
-                // mask="date"
+                mask="date"
                 // required={required}
               />
             </Grid.Column>
